@@ -18,7 +18,7 @@
 ?>
 <div class="row">
 	<div class="col-md-4 text-center">
-		<h1>Evidenca</h1>
+		<h1><a id="odstrani" ">Evidenca</a></h1>
 	</div>
 	<div class="col-md-8">
 	</div>
@@ -50,7 +50,7 @@
 		</div>
 		<div class="col-md-4 text-center">
 			<label>Znesek v €: </label>
-			<input type="text" id="znesek" name="znesek" class="form-control">
+			<input type="text" id="znesek" name="znesek" class="form-control" required>
 		</div>
 	</div>
 	<br>
@@ -61,12 +61,16 @@
 	</div>
 </form>
 <p class="text-danger" id="konec"></p>
-<p class="text-info text-center">Dosedanji vnosi: </p>
-
-<table class="table table-bordered" id="sedanjost">	
+<p class="text-info text-center">Stroški za tekoči mesec: </p>
+<table class="table">
 	<tr>
-		<td><a href="#"><span class="glyphicon glyphicon-sort"></span></a></td>
+		<td></td>
+		<td class="text-center"><a id="datumSort" href="#"><span class="glyphicon glyphicon-sort"></span></a></td>
+		<td class="text-center"><a id="cenaSort" href="#"><span class="glyphicon glyphicon-sort"></span></a></td>
 	</tr>
+</table>
+<table class="table table-bordered" id="sedanjost">	
+
 </table>
 	
 </body>
@@ -79,6 +83,39 @@
 </script>
 <script type="text/javascript" src="js/basic.js"></script>
 <script type='text/javascript'>
+
+ 	var ascdesc = 1;
+	$("#datumSort").click(function() {		
+      $.ajax({
+        url: "php/sortirajDatum.php",
+        type: 'POST',
+        data : { status : ascdesc },
+        success: function(res) {
+            	$('#sedanjost').html(res);
+            	if (ascdesc == 1) {
+            		ascdesc++;
+            	} else {
+            		ascdesc--;
+            	}
+        	}
+    	});
+	});
+	$("#cenaSort").click(function() {		
+      $.ajax({
+        url: "php/sortirajCeno.php",
+        type: 'POST',
+        data : { status : ascdesc },
+        success: function(res) {
+            	$('#sedanjost').html(res);
+            	if (ascdesc == 1) {
+            		ascdesc++;
+            	} else {
+            		ascdesc--;
+            	}
+        	}
+    	});
+	});
+
       //prikaz podatkov
       $.ajax({
         url: "php/prikaz_podatkov.php",
@@ -113,6 +150,9 @@
         	}
     	});	
     });
+	$("#odstrani").click(function() {		
+		alert("drek");
+	});
 </script>
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>

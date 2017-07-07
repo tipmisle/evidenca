@@ -7,6 +7,10 @@ $znesek = $_POST['znesek'];
 $vrsta_stroska = $_POST['vrsta_stroska'];
 $date = date('d-m-Y', strtotime($_POST['datum']));
 
+if ($znesek == "") {
+	$znesek = 0;
+}
+
 if ($date == "01-01-1970") {
 	try {
 	    $sql = "INSERT INTO vnosi (vrsta, datum, znesek)

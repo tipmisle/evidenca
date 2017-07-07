@@ -3,8 +3,17 @@
 include '../cfg/config.php';
 include '../include/pdo_connection.php';
 
-$query = "SELECT * FROM vnosi WHERE MONTH(datum) = MONTH(NOW())";
-$result = $conn->query($query);
+$status = $_POST['status'];
+
+if ($status == 1) {
+	$query = "SELECT * FROM vnosi WHERE MONTH(datum) = MONTH(NOW()) ORDER BY znesek ASC";
+	$result = $conn->query($query);
+} else {
+	$query = "SELECT * FROM vnosi WHERE MONTH(datum) = MONTH(NOW()) ORDER BY znesek DESC";
+	$result = $conn->query($query);
+}
+
+
 
 while($row = $result->fetch(PDO::FETCH_ASSOC)){
 echo '<tr>
