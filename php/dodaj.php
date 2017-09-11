@@ -3,20 +3,25 @@
 include '../cfg/config.php';
 include '../include/pdo_connection.php';
 
+//Določimo elemente, ki jih prejmemo z index.php
 $znesek = $_POST['znesek'];
 $vrsta_stroska = $_POST['vrsta_stroska'];
 $date = date('d-m-Y', strtotime($_POST['datum']));
+$opis = $_POST['opis'];
 
+//mini varovalka
 if ($znesek == "") {
 	$znesek = 0;
 }
 
+
 if ($date == "01-01-1970") {
 	try {
-	    $sql = "INSERT INTO vnosi (vrsta, datum, znesek)
-	    		VALUES ('$vrsta_stroska', current_timestamp(), $znesek)";
-	    // use exec() because no results are returned
+		//SQL stavek, ki vnese podatke v bazo
+	    $sql = "INSERT INTO vnosi (vrsta, datum, znesek, opis)
+	    		VALUES ('$vrsta_stroska', current_timestamp(), $znesek, '$opis')";
 	    $conn->exec($sql);
+	    //sporočilo, ki ga prikažemo v div-u data
     	echo "Vnos stroška je bil uspešen!";
     }
 	catch(PDOException $e) {
@@ -24,10 +29,11 @@ if ($date == "01-01-1970") {
     }
 } else {
 	try {
-	    $sql = "INSERT INTO vnosi (vrsta, datum, znesek)
-	    		VALUES ('$vrsta_stroska', str_to_date('$date','%d-%m-%Y'), $znesek)";
-	    // use exec() because no results are returned
+		//SQL stavek, ki vnese podatke v bazo
+	    $sql = "INSERT INTO vnosi (vrsta, datum, znesek, opis)
+	    		VALUES ('$vrsta_stroska', str_to_date('$date','%d-%m-%Y'), $znesek, '$opis')";
 	    $conn->exec($sql);
+	    //sporočilo, ki ga prikažemo v div-u data
     	echo "Vnos stroška je bil uspešen!";
     }
 	catch(PDOException $e) {

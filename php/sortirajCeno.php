@@ -15,12 +15,14 @@ if ($status == 1) {
 
 
 
+//while zanka za prikaz podatkov
 while($row = $result->fetch(PDO::FETCH_ASSOC)){
-echo '<tr>
+	echo '<tr id="'. $row['id'] .'">
 		<td class="text-center">'. $row['vrsta'] .'</td>
 		<td class="text-center">'. $row['datum'] .'</td>
 		<td class="text-center">'. $row['znesek'] .'€</td>
-		<td class="text-center"><a id="odstrani'. $row['id'] .'" href="#"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a></td>
+		<td class="text-center">'. $row['opis'] .'</td>
+		<td class="text-center"><a id="'. $row['id'] .'" class="odstrani"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a></td>
 	  </tr>';
 }
 

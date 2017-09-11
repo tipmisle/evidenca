@@ -1,5 +1,9 @@
 //ELEMENTI
 var datumcas = document.getElementById('datumcas');
+var gordol = document.getElementById('sedanjost');
+
+
+
 
 //funkcija za trenutni čas in datum
 function currentDateTime() {

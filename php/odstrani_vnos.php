@@ -3,6 +3,14 @@
 include '../cfg/config.php';
 include '../include/pdo_connection.php';
 
-echo "s";
+$id = $_POST['id'];
+
+echo $id;
+//SQL stavek, ki odstrani vnos iz baze
+$query = "DELETE FROM vnosi WHERE id = $id";
+$result = $conn->query($query);
+
+//končamo izvajanje skripte
+exit;
 
 ?>
