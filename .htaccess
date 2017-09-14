@@ -2,10 +2,10 @@ RewriteEngine on
 
 # redirect to https www
 RewriteCond %{HTTPS} off
-RewriteCond %{HTTP_HOST} ^(?:www\.)(domain\.com)$ [NC]
+RewriteCond %{HTTP_HOST} ^(?:www\.)(josiprajkovic\.com)$ [NC]
 RewriteRule ^ https://www.%1%{REQUEST_URI} [R=301,L]
 
 # redirect to http subdomain
 RewriteCond %{HTTPS} on
-RewriteCond %{HTTP_HOST} ^((?!www).+\.demo.domain\.com)$ [NC]
+RewriteCond %{HTTP_HOST} ^((?!www).+\.evidenca.josiprajkovic\.com)$ [NC]
 RewriteRule ^ http://%1%{REQUEST_URI} [R=301,L]
