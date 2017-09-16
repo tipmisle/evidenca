@@ -1,7 +1,7 @@
 <?php
 	$servername = "localhost";
-	$username = "root";
-	$password = "";
+	$username = "bloguser";
+	$password = "1995Tokiodrift1995";
 
 	$database = "evidenca";
 	$table = "vnosi";
