@@ -72,7 +72,7 @@
 			</div>
 		</div>
 		<div class="col-lg-4">
-			<form id="obrazec" action="php/dodaj.php" method="post">
+			<form id="obrazec" action="php/dodaj.php" method="POST">
 				<div class="row">
 					<div class="form-group">
 						<label for="vrsta">Vrsta stroška:</label>
@@ -139,7 +139,7 @@
 				type: 'POST',
 				data: { id: idVnosa },
 				success: function (res) {
-					$('#'+idVnosa).fadeOut();
+					$('#'+idVnosa).parent().parent().fadeOut();
 				}
 				});
 			})
@@ -219,3 +219,4 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 <script type="text/javascript" src="js/basic.js"></script>
 </html>
+
