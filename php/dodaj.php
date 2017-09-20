@@ -18,9 +18,12 @@ if ($znesek == "") {
 if ($date == "01-01-1970") {
 	try {
 		//SQL stavek, ki vnese podatke v bazo
-	    $sql = "INSERT INTO vnosi (vrsta, datum, znesek, opis)
-	    		VALUES ('$vrsta_stroska', current_timestamp(), $znesek, '$opis')";
-	    $conn->exec($sql);
+	    $sql = $conn->prepare("INSERT INTO vnosi (vrsta, datum, znesek, opis)
+	    		VALUES (:vrsta, current_timestamp(), :znesek, :opis)");
+	    $sql->bindParam(':vrsta', $vrsta_stroska);
+	    $sql->bindParam(':znesek', $znesek);
+	    $sql->bindParam(':opis', $opis);
+	    $sql->execute();
 	    //sporočilo, ki ga prikažemo v div-u data
     	echo "Vnos stroška je bil uspešen!";
     }
@@ -30,9 +33,13 @@ if ($date == "01-01-1970") {
 } else {
 	try {
 		//SQL stavek, ki vnese podatke v bazo
-	    $sql = "INSERT INTO vnosi (vrsta, datum, znesek, opis)
-	    		VALUES ('$vrsta_stroska', str_to_date('$date','%d-%m-%Y'), $znesek, '$opis')";
-	    $conn->exec($sql);
+	    $sql = $conn->prepare("INSERT INTO vnosi (vrsta, datum, znesek, opis)
+	    		VALUES (:vrsta, str_to_date(:date,'%d-%m-%Y'), :znesek, :opis)");
+	    $sql->bindParam(':vrsta', $vrsta_stroska);
+	    $sql->bindParam(':znesek', $znesek);
+	    $sql->bindParam(':opis', $opis);
+	    $sql->bindParam(':date', $date);
+	    $sql->execute();
 	    //sporočilo, ki ga prikažemo v div-u data
     	echo "Vnos stroška je bil uspešen!";
     }

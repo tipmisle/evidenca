@@ -4,7 +4,7 @@ include '../cfg/config.php';
 include '../include/pdo_connection.php';
 
 //SQL stavek, ki prikaže podatke iz baze
-$query = "SELECT * FROM evidenca.vnosi";
+$query = "SELECT * FROM evidenca.vnosi WHERE MONTH(datum) = MONTH(CURRENT_DATE())";
 $result = $conn->query($query);
 
 //while zanka za prikaz podatkov
