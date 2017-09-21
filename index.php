@@ -180,6 +180,40 @@
 		});
 	});
 
+	//funkcija za sortiranje vnosov po opisu
+	$("#opisSort").click(function() {		
+	  $.ajax({
+		url: "php/sortirajOpis.php",
+		type: 'POST',
+		data : { status : ascdesc },
+		success: function(res) {
+				$('#sedanjost').html(res);
+				if (ascdesc == 1) {
+					ascdesc++;
+				} else {
+					ascdesc--;
+				}
+			}
+		});
+	});
+
+	//funkcija za sortiranje vnosov po vrsti stroška
+	$("#vrstaSort").click(function() {		
+	  $.ajax({
+		url: "php/sortirajVrsta.php",
+		type: 'POST',
+		data : { status : ascdesc },
+		success: function(res) {
+				$('#sedanjost').html(res);
+				if (ascdesc == 1) {
+					ascdesc++;
+				} else {
+					ascdesc--;
+				}
+			}
+		});
+	});
+
 	//prikaz podatkov ko se stran zažene
 	$.ajax({
 	  url: "php/prikaz_podatkov.php",
