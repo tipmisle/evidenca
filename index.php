@@ -14,6 +14,9 @@
 
 </head>
 	<body onload="currentDateTime()">
+	<div class="alert alert-danger">
+		<p>Functions are disabled for showcase purposes.</p>
+	</div>
 	<?php 
 		include 'cfg/config.php';
 		include 'include/pdo_connection.php'; 
@@ -116,7 +119,7 @@
 
 <script type='text/javascript'>
 	//s to funkcijo ohranimo event listenerje, ki se drugače pri spremenjenih elementih odstranijo
-	$(document).ready(function(){
+/*	$(document).ready(function(){
 		$('body').on('click','.odstrani',function(){
 			  var idVnosa = $(this).attr('id');
 			  $.ajax({
@@ -128,10 +131,10 @@
 				}
 				});
 			})
-		});
+		});*/
 
 	//funkcija za odstranitev vnosa
-	$(function(){
+/*	$(function(){
 			$('.odstrani').click(function(){
 				var idVnosa = $(this).attr('id');
 			  $.ajax({
@@ -144,7 +147,7 @@
 				});
 			})
 		});
-
+*/
 	//simbolična vrednost za določitev razvrščanja navzgor ali navzdol
 	var ascdesc = 1;
 	//funkcija za sortiranje vnosov po datumu
@@ -229,7 +232,7 @@
 	  //preprečimo normalno izvršitev obrazca
 	  event.preventDefault();
 
-	  var $form = $(this),
+/*	  var $form = $(this),
 		  url = $form.attr('action');
 
 	  //tukaj pošljemo podatke
@@ -247,7 +250,7 @@
 			$('#sedanjost').html(res);
 			}
 		});	
-	  });
+	  });*/
 	});
 </script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>

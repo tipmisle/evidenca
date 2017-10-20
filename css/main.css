@@ -152,3 +152,9 @@ body {
 	background-color: #FFF;
 	padding: 20px;
 }
+
+.alert-danger {
+	position: fixed;
+	bottom: 10px;
+	left: 20px;
+}
