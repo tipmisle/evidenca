@@ -49,7 +49,7 @@
 	</nav>
 	<div class="container">
 		<div class="col-lg-8">
-			<p class="text-info heading">Stroški za tekoči mesec: </p>
+			<p class="text-info heading">Dosedanji stroški: </p>
 			<div class="podatki">
 				<ul>
 					<li id="vrstaSort">
