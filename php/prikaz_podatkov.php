@@ -4,11 +4,13 @@ include '../cfg/config.php';
 include '../include/pdo_connection.php';
 
 //SQL stavek, ki prikaže podatke iz baze
-$query = "SELECT * FROM evidenca.vnosi WHERE MONTH(datum) = MONTH(CURRENT_DATE())";
+$query = "SELECT * FROM vnosi";
 $result = $conn->query($query);
+$result->execute();
 
-//while zanka za prikaz podatkov
-while($row = $result->fetch(PDO::FETCH_ASSOC)){
+
+//foreach za prikaz podatkov
+foreach($result as $row){
 	echo '<tr id="'. $row['id'] .'">
 		<td class="text-center">'. $row['vrsta'] .'</td>
 		<td class="text-center">'. $row['datum'] .'</td>
